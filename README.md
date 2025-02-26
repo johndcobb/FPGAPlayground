@@ -18,7 +18,7 @@ ghdl --synth --out=verilog Switches_To_LEDs > project1.v
 ```
 If you rather, you can combine the analyze and synthesize steps with the following command
 ```
-ghdl --synth --out=verilog project.vhdl -e
+ghdl --synth --out=verilog project.vhdl -e > project1.v
 ```
 Here, it guesses the top entity or you can put it in manually after -e.
 
@@ -34,7 +34,7 @@ Now that we have our json, we need to run our place and route, which uses projec
 ```
 nextpnr-ice40 --hx1k --package vq100 --json project1.json --pcf project1.pcf --asc project1.asc   # run place and route
 ```
---hx1k sets the sort of lattice ice40 fpga I have. The package vq100 is also specific to my nandland go board. The --json and --pcf point it to the files it needs to read, and --asc tells it what file to write the ascii bitstream to. Optionally, you can add the option --gui to the end to see a schematic of the the physical connections. It looks like it also generates a report of the timing.
+--hx1k sets the sort of lattice ice40 fpga I have. The package vq100 is also specific to my nandland go board. The --json and --pcf point it to the files it needs to read, and --asc tells it what file to write the ascii bitstream to. Optionally, you can add the option --gui to the end to see a schematic of the the physical connections (you need to manually click some buttons on the top to place all the routes and seem them show up).
 
 Now, we can take the ascii schematics and convert it into a binary bistream file .bin.
 ```
@@ -47,8 +47,16 @@ iceprog project1.bin
 
 So, all together its
 ```
-ghdl --synth --out=verilog project.vhdl -e Switches_To_LEDs # optionally convert VDHL to Verilog
+ghdl --synth --out=verilog project1.vhdl -e Switches_To_LEDs > project1.v # optionally convert VDHL to Verilog
 yosys -p 'synth_ice40 -top Switches_To_LEDs -json project1.json' project1.v # synthesize the code to a json
+nextpnr-ice40 --hx1k --package vq100 --json project1.json --pcf project1.pcf --asc project1.asc   # run place and route
+icepack project1.asc project1.bin # convert ascii bitstream to binary 
+iceprog project1.bin # upload binary bitstream to device
+```
+or with guessing the top module:
+```
+ghdl --synth --out=verilog project1.vhdl -e > project1.v # optionally convert VDHL to Verilog
+yosys -p 'synth_ice40 -json project1.json' project1.v # synthesize the code to a json
 nextpnr-ice40 --hx1k --package vq100 --json project1.json --pcf project1.pcf --asc project1.asc   # run place and route
 icepack project1.asc project1.bin # convert ascii bitstream to binary 
 iceprog project1.bin # upload binary bitstream to device
@@ -61,3 +69,5 @@ You can do a timing analysis report
 icetime -tmd hx1k project1.asc
 ```
 The recommended approach for learning how to use this documentation is to synthesize very simple circuits using Yosys and Arachne-pnr, run the icestorm tool icebox_explain on the resulting bitstream files, and analyze the results using the HTML export of the database mentioned above. icebox_vlog can be used to convert the bitstream to Verilog. The output file of this tool will also outline the signal paths in comments added to the generated Verilog code.
+
+yosys can also generate visualizations of the entire network with the command show. See [here](https://yosyshq.net/yosys/screenshots.html).
