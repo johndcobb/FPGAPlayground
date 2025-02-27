@@ -1,0 +1,19 @@
+verilated_fst_c.o: \
+  /Applications/oss-cad-suite/share/verilator/include/verilated_fst_c.cpp \
+  /Applications/oss-cad-suite/share/verilator/include/verilated.h \
+  /Applications/oss-cad-suite/share/verilator/include/verilatedos.h \
+  /Applications/oss-cad-suite/share/verilator/include/verilated_config.h \
+  /Applications/oss-cad-suite/share/verilator/include/verilated_types.h \
+  /Applications/oss-cad-suite/share/verilator/include/verilated_funcs.h \
+  /Applications/oss-cad-suite/share/verilator/include/verilated_fst_c.h \
+  /Applications/oss-cad-suite/share/verilator/include/verilated_trace.h \
+  /Applications/oss-cad-suite/share/verilator/include/gtkwave/fastlz.c \
+  /Applications/oss-cad-suite/share/verilator/include/gtkwave/fastlz.h \
+  /Applications/oss-cad-suite/share/verilator/include/gtkwave/fstapi.c \
+  /Applications/oss-cad-suite/share/verilator/include/gtkwave/fst_config.h \
+  /Applications/oss-cad-suite/share/verilator/include/gtkwave/fstapi.h \
+  /Applications/oss-cad-suite/share/verilator/include/gtkwave/lz4.h \
+  /Applications/oss-cad-suite/share/verilator/include/gtkwave/lz4.c \
+  /Applications/oss-cad-suite/share/verilator/include/verilated_trace_imp.h \
+  /Applications/oss-cad-suite/share/verilator/include/verilated_intrinsics.h \
+  /Applications/oss-cad-suite/share/verilator/include/verilated_threads.h
