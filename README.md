@@ -34,7 +34,7 @@ Now that we have our json, we need to run our place and route, which uses projec
 ```
 nextpnr-ice40 --hx1k --package vq100 --json project1.json --pcf project1.pcf --asc project1.asc   # run place and route
 ```
---hx1k sets the sort of lattice ice40 fpga I have. The package vq100 is also specific to my nandland go board. The --json and --pcf point it to the files it needs to read, and --asc tells it what file to write the ascii bitstream to. Optionally, you can add the option --gui to the end to see a schematic of the the physical connections (you need to manually click some buttons on the top to place all the routes and seem them show up).
+--hx1k sets the sort of lattice ice40 fpga I have. The package vq100 is also specific to my nandland go board. The --json and --pcf point it to the files it needs to read, and --asc tells it what file to write the ascii bitstream to. Optionally, you can add the option --gui to the end to see a schematic of the the physical connections (you need to manually click some buttons on the top to place all the routes and seem them show up). When using clocks, it may be necessary to use the --freq 40.00 to tell it that the clock is 40 MHz. OR you can put that in the pcf
 
 Now, we can take the ascii schematics and convert it into a binary bistream file .bin.
 ```
@@ -57,7 +57,7 @@ or with guessing the top module:
 ```
 ghdl --synth --out=verilog project1.vhdl -e > project1.v # optionally convert VDHL to Verilog
 yosys -p 'synth_ice40 -json project1.json' project1.v # synthesize the code to a json
-nextpnr-ice40 --hx1k --package vq100 --json project1.json --pcf project1.pcf --asc project1.asc   # run place and route
+nextpnr-ice40 --hx1k --package vq100 --json project1.json --pcf project1.pcf --freq 40.00 --asc project1.asc   # run place and route
 icepack project1.asc project1.bin # convert ascii bitstream to binary 
 iceprog project1.bin # upload binary bitstream to device
 ```
