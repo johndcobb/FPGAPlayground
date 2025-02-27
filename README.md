@@ -71,3 +71,18 @@ icetime -tmd hx1k project1.asc
 The recommended approach for learning how to use this documentation is to synthesize very simple circuits using Yosys and Arachne-pnr, run the icestorm tool icebox_explain on the resulting bitstream files, and analyze the results using the HTML export of the database mentioned above. icebox_vlog can be used to convert the bitstream to Verilog. The output file of this tool will also outline the signal paths in comments added to the generated Verilog code.
 
 yosys can also generate visualizations of the entire network with the command show. See [here](https://yosyshq.net/yosys/screenshots.html).
+
+## Simulating with Verilator
+
+I am learning this from [here](https://itsembedded.com/dhd/verilator_1/). First, the Verilator application is not used to simulate the testbench. Instead, the Verilator application is only used for converting Verilog to C++ and create build instructions for Make. The simulator in this case is the C++ testbench itself.
+
+```
+verilator --binary -j 0 -Wall -Wno-fatal --trace-fst And_Gate_TB.sv
+```
+
+-j 0 uses as many CPU cores as are available. -Wno-fatal stops exiting upon warning -Wall generates all C++ warnings. --trace enables waveform tracing.
+
+You can open up the waveform with gtkwave waveform.vcd.
+
+
+Execution profiling is possible with --prof-exec. This will save the profiling data in a non-human-friendly form to a prof exec file, which can be visualized with verilator_gantt.
