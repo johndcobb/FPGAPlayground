@@ -1,0 +1,9 @@
+# LED pins:
+set_io o_LED_1 56
+# Push-button switches:
+set_io i_Switch_1 53
+# Set Clock pins
+set_io i_Clk 15
+set_frequency i_Clk 40.00
+# The clock period (in sdc) tells the tools how much time is available to route wires between flip flops. As clock speed increases, it gets harder for the FPGA to meet timing, or achieve all desired tasks within each clock cycle. Upon running, there should be a way to see how fast we could theoretically run the code at.
+# For nextpnr, you can set the frequency here in a way that is not supported for other proprietary softwares. You can add something with format set_frequency i_Clk 40.00
