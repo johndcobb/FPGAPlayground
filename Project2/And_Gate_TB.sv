@@ -9,7 +9,6 @@ module And_Gate_TB();
      .o_LED_1(w_Out));
     //Test stimulus
     initial begin
-        $dumpfile("And_Gate_TB.vcd"); $dumpvars; // Save the simulation results as a waveform file
         r_In1 = 1'b0;
         r_In2 = 1'b0;
         #10; // delay 10 time units
@@ -22,7 +21,6 @@ module And_Gate_TB();
         r_In1 = 1'b1;
         r_In2 = 1'b1;
         #10;
-        $finish();
     end
 endmodule
 // No inputs or outputs are declared -- the testbench does not connect to any external signals.

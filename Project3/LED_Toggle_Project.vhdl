@@ -17,7 +17,7 @@ begin
             r_Switch_1 <= i_Switch_1;
             if r_Switch_1 = '1' and i_Switch_1 = '0' then
                 r_LED_1 <= not r_LED_1;
-            end if;d
+            end if;
         end if;
     end process;
     o_LED_1 <= r_LED_1;

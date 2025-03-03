@@ -57,7 +57,7 @@ or with guessing the top module:
 ```
 ghdl --synth --out=verilog project1.vhdl -e > project1.v # optionally convert VDHL to Verilog
 yosys -p 'synth_ice40 -json project1.json' project1.v # synthesize the code to a json
-nextpnr-ice40 --hx1k --package vq100 --json project1.json --pcf project1.pcf --freq 40.00 --asc project1.asc   # run place and route
+nextpnr-ice40 --hx1k --package vq100 --json project1.json --pcf project1.pcf --freq 25.00 --asc project1.asc   # run place and route
 icepack project1.asc project1.bin # convert ascii bitstream to binary 
 iceprog project1.bin # upload binary bitstream to device
 ```
@@ -77,7 +77,8 @@ yosys can also generate visualizations of the entire network with the command sh
 I am learning this from [here](https://itsembedded.com/dhd/verilator_1/). First, the Verilator application is not used to simulate the testbench. Instead, the Verilator application is only used for converting Verilog to C++ and create build instructions for Make. The simulator in this case is the C++ testbench itself.
 
 ```
-verilator --binary -j 0 -Wall -Wno-fatal --trace-fst And_Gate_TB.sv
+verilator --binary -j 0 -Wall -Wno-fatal --trace-fst And_Gate_TB.sv 
+verilator --binary -j 0 -Wall -Wno-fatal --trace-fst Debounce_Project.v Debounce_Project_TB.sv 
 ```
 
 -j 0 uses as many CPU cores as are available. -Wno-fatal stops exiting upon warning -Wall generates all C++ warnings. --trace enables waveform tracing.

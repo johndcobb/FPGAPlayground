@@ -1,0 +1,7 @@
+# LED pins:
+set_io o_LED_1 56
+# Push-button switches:
+set_io i_Switch_1 53
+# Set Clock pins
+set_io i_Clk 15
+set_frequency i_Clk 40.00

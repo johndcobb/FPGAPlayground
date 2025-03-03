@@ -6,7 +6,7 @@ module LED_Toggle_Project(
     reg r_LED_1 = 1'b0;
     reg r_Switch_1 = 1'b0;
     // always is triggered by changes in one or more signals
-    always @(posedge i_Clk) // this block of code will run every rising edge of the clock, due to posedge. 
+    always @(posedge i_Clk) // this block of code will run every rising edge of the clock, due to posedge. Book suggests that we always use the clock here, not some other combinational signal.
     begin
        r_Switch_1 <= i_Switch_1; // this registers a flip flop with i_Switch_1 on D input, r_Switch_1 on the Q input, and i_Clk on the clock input
        if (i_Switch_1 == 1'b0 & r_Switch_1 == 1'b1) // if current state is 0 and previous state was 1, we found a falling edge (so the switch has been released )

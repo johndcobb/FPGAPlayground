@@ -15,6 +15,33 @@ void VAnd_Gate_TB___024root___eval_initial(VAnd_Gate_TB___024root* vlSelf) {
     VAnd_Gate_TB___024root___eval_initial__TOP__Vtiming__0(vlSelf);
 }
 
+VL_INLINE_OPT VlCoroutine VAnd_Gate_TB___024root___eval_initial__TOP__Vtiming__0(VAnd_Gate_TB___024root* vlSelf) {
+    VL_DEBUG_IF(VL_DBG_MSGF("+    VAnd_Gate_TB___024root___eval_initial__TOP__Vtiming__0\n"); );
+    VAnd_Gate_TB__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
+    auto& vlSelfRef = std::ref(*vlSelf).get();
+    // Body
+    vlSelfRef.And_Gate_TB__DOT__r_In1 = 0U;
+    vlSelfRef.And_Gate_TB__DOT__r_In2 = 0U;
+    co_await vlSelfRef.__VdlySched.delay(0xaULL, nullptr, 
+                                         "And_Gate_TB.sv", 
+                                         14);
+    vlSelfRef.And_Gate_TB__DOT__r_In1 = 0U;
+    vlSelfRef.And_Gate_TB__DOT__r_In2 = 1U;
+    co_await vlSelfRef.__VdlySched.delay(0xaULL, nullptr, 
+                                         "And_Gate_TB.sv", 
+                                         17);
+    vlSelfRef.And_Gate_TB__DOT__r_In1 = 1U;
+    vlSelfRef.And_Gate_TB__DOT__r_In2 = 0U;
+    co_await vlSelfRef.__VdlySched.delay(0xaULL, nullptr, 
+                                         "And_Gate_TB.sv", 
+                                         20);
+    vlSelfRef.And_Gate_TB__DOT__r_In1 = 1U;
+    vlSelfRef.And_Gate_TB__DOT__r_In2 = 1U;
+    co_await vlSelfRef.__VdlySched.delay(0xaULL, nullptr, 
+                                         "And_Gate_TB.sv", 
+                                         23);
+}
+
 void VAnd_Gate_TB___024root___eval_act(VAnd_Gate_TB___024root* vlSelf) {
     VL_DEBUG_IF(VL_DBG_MSGF("+    VAnd_Gate_TB___024root___eval_act\n"); );
     VAnd_Gate_TB__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
