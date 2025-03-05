@@ -47,7 +47,7 @@ module LED_Toggle_Project(
     input i_Switch_1,
     input i_Clk,
     output o_LED_1);
-    reg r_LED_1 = 1'b0;
+    reg r_LED_1 = 1'b0; //initial signal assignments are only synthesizable for SOME FPGAs, its better to use resets to set signals to some default value.
     reg r_Switch_1 = 1'b0;
     always @(posedge i_Clk)
     begin

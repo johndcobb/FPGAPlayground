@@ -20,3 +20,4 @@ module Debounce_Filter_TB();
         $finish();
     end
 endmodule
+// Lattice has an on-FPGA debugger called Reveal which takes a bunch of fpga board space to set up. It should be used as a last resort when simulation does not detect the issue.
