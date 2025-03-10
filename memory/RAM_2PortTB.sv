@@ -55,6 +55,7 @@ module RAM_2Port_TB ();
     r_Rd_En   <= 1'b0;
 
     repeat(4) @(posedge r_Clk); 
+    r_Wr_Data <= 0; //reset before test
 
     // Test reading and writing at the same time
     r_Wr_Addr <= 1;
