@@ -78,7 +78,7 @@ I am learning this from [here](https://itsembedded.com/dhd/verilator_1/). First,
 
 ```
 verilator --binary -j 0 -Wall -Wno-fatal --trace-fst And_Gate_TB.sv 
-verilator --binary -j 0 -Wall -Wno-fatal --trace-fst Debounce_Project.v Debounce_Project_TB.sv 
+verilator --binary -j 0 -Wall -Wno-fatal --trace-fst Debounce_Project_TB.sv Debounce_Project.v  
 ```
 
 -j 0 uses as many CPU cores as are available. -Wno-fatal stops exiting upon warning -Wall generates all C++ warnings. --trace enables waveform tracing.
