@@ -87,3 +87,14 @@ You can open up the waveform with gtkwave waveform.vcd.
 
 
 Execution profiling is possible with --prof-exec. This will save the profiling data in a non-human-friendly form to a prof exec file, which can be visualized with verilator_gantt.
+
+## uART 
+
+The following will connect to the device and send packets of data:
+```
+screen /dev/tty.usbserial-1101 115200
+```
+I can redirect output of something to the device, so I can run something in python and direct the output to my FPGA
+```
+echo "Hello, Serial!" > /dev/tty.usbserial-1101 
+```
